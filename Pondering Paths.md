@@ -10,4 +10,9 @@ After you ssh into the the challenge screen on your terminal, enter `/pwn` to ge
 ## Program and Absolute Paths
 In this challenge, you have to enter the absolute path of the challenge program, 'run' to get the flag.  
 An absolute path makes no assumptions about your current location in relation to the location of the file or directory it's describing. It mentions every step through the file system from the root required to reach the program.  
-Once in the challeneg instance, enter the absolute path `/challenge/run` to get the flag.
+Once in the challenge instance, enter the absolute path `/challenge/run` to get the flag.
+
+## Position Elsewhere
+the cd command is used to change directories.  
+You have to execute `/challenge/run` to get the flag but it is not in your current working directory.  
+Change directory to `/tmp` using `cd /tmp` and then enter `challenge/run` again to get the flag.
