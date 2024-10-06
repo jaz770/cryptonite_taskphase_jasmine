@@ -13,6 +13,6 @@ An absolute path makes no assumptions about your current location in relation to
 Once in the challenge instance, enter the absolute path `/challenge/run` to get the flag.
 
 ## Position Elsewhere
-the cd command is used to change directories.  
+The cd command is used to change directories.  
 You have to execute `/challenge/run` to get the flag but it is not in your current working directory.  
 Change directory to `/tmp` using `cd /tmp` and then enter `challenge/run` again to get the flag.
