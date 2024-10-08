@@ -2,7 +2,7 @@
 This module teaches linux commands.
 
 ## cat: not the pet, but the command!
-The `cat` command reads out files. It can take multiple arugemts and will concatenate the corresponding files in that order.  
+The `cat` command reads out files. It can take multiple arguments and will concatenate the corresponding files in that order.  
 The flag is stored in the `flag` file in the home directory.(which is where the shell starts).   
   
 
