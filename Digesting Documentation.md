@@ -84,3 +84,45 @@ It shows:
 Use `/challenge/challenge --azjuvw 533` to get the flag.  
 
 flag: `pwn.college{AaIzjK5TLSuYY3vwtdlsKzPU3QO.dZTM4QDL4ATO0czW}`
+
+## Helpful Programs
+Use `/challenge/challenge --help`.   
+```
+usage: a challenge to make you ask for help [-h] [--fortune] [-v] [-g GIVE_THE_FLAG] [-p]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --fortune             read your fortune
+  -v, --version         get the version number
+  -g GIVE_THE_FLAG, --give-the-flag GIVE_THE_FLAG
+                        get the flag, if given the correct value
+  -p, --print-value     print the value that will cause the -g option to give you the flag
+```
+Enter: `/challenge/challenge -p`.  
+`The secret value is: 335` is the output.  
+Enter: `/challenge/challenge -g 335`.  
+This gives the flag.  
+
+flag: `pwn.college{E3QmdbyfKfkykmZ3h59e7IrNAir.ddjM4QDL4ATO0czW}`
+
+## Help for Builtins
+Enter `help challenge` to read the guide.  
+```
+challenge: challenge [--fortune] [--version] [--secret SECRET]
+    This builtin command will read you the flag, given the right arguments!
+
+    Options:
+      --fortune         display a fortune
+      --version         display the version
+      --secret VALUE    prints the flag, if VALUE is correct
+
+    You must be sure to provide the right value to --secret. That value
+    is "A2UFiaNL".
+```
+The `--secret VALUE` command has to be used.  
+Enter: `challenge --secret A2UFiaNL`.   
+This gives the flag.
+
+
+flag: `pwn.college{A2UFiaNLLeKo-4DbHcaSTMSK5Rf.dRTM5QDL4ATO0czW}`
+
