@@ -169,3 +169,17 @@ Which contains the flag.
 
 
 flag: `pwn.college{0jDfy-DqUwG2Z23QXOxWfDYabEb.dljM4QDL4ATO0czW}`
+
+
+## making directories
+First, create a /tmp/pwn directory
+Use `mkdir /tmp/pwn` to make the directory.  
+Now, the college file has to be created in the `/tmp/pwn` directory.  
+So `cd` to `/tmp/pwn`.   
+Now use the command `touch college` to create the file.  
+Enter `challenge/run` which will check if the college file exists. If it does, it will give the flag.  
+
+  
+flag: `pwn.college{gZ60JMC-MoRvPfdrp0hKmEAr2JY.dFzM4QDL4ATO0czW}`
+
+
