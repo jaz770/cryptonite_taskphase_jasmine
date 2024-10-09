@@ -48,3 +48,124 @@ cd challenge
 Note: The above could also be done with the absolute path `/challenge/8075-renamed-run-2147`  
 
 flag: `pwn.college{cr_HPjlVSJqP0KIUTKO6B7YBNfJ.dhjM4QDL4ATO0czW}`
+
+## touching files
+the `touch` command creates a new file with the name of the argument given to it.  
+Here, you have to create two files `/tmp/pwn` and `/tmp/college` before using `/challenge/run`.  
+Thus, the code will be:   
+```
+touch /tmp/pwn
+touch /tmp/college
+/challenge/run
+```
+
+flag: `pwn.college{kvUEgWLLfFBuEXdvY9Xa2S7z4tC.dBzM4QDL4ATO0czW}`
+
+## removing files
+the `rm` command deletes the file given to it as the argument.  
+Here, a delete_me file is created in the home directory.  
+Use `rm delete_me` to remove it.  
+Then enter `/challenge/check` which will check if the file has been deleted. If it has, you will get the flag.  
+
+flag: `pwn.college{oHGlm698TA1l7Nq3O6ysHo6kqyU.dZTOwUDL4ATO0czW}`
+
+## hidden files
+The flag is in some file starting with a `.` in the root directory. 
+First, change to the root directry, display the files, including those starting with a `.` and `cat` its contents out.  
+The code:
+```
+cd /
+ls -a
+cat .flag-90526901540
+```
+(Note: The directory contains a file named  .flag-90526901540. That's the flag file)  
+
+  
+flag: `pwn.college{0mQm2L9KwoHFGZ1aLoitu4SkKNd.dBTN4QDL4ATO0czW}`
+
+## An Epic Filesystem Quest
+In the challenge, the previously learned commands are all used to find the flag.  
+
+Start by changing to the root directory with, `cd /`  
+Use `ls` to display the contents.   
+There's a `NOTE` file. `cat ` its contents out.  
+It says the next clue is in: ` /usr/lib/ruby/2.7.0/rdoc`  
+
+Use `cs  /usr/lib/ruby/2.7.0/rdoc` to enter the directory. Use `ls` to displaay the file list again.  
+There's a file named ALERT. `cat` its contents out. It says that the next clue is in `/usr/lib/python3/dist-packages/jedi/third_party/typeshed/stdlib/2and3/xml/sax`  
+
+`cd` to `/usr/lib/python3/dist-packages/jedi/third_party/typeshed/stdlib/2and3/xml/sax`.  
+Display the contents with `ls` 
+There's a file named INFO that seems similoar to the previous clue files. `cat` its content.  
+It says: 
+```
+Great sleuthing!
+The next clue is in: /opt/linux/linux-5.4/include/config/rfkill
+
+Watch out! The next clue is **trapped**. You'll need to read it out without 'cd'ing into the directory; otherwise, the clue will self destruct!
+```
+
+Since you can't use cd, give the absolute path to the `ls` command. 
+` ls /opt/linux/linux-5.4/include/config/rfkill`  
+There's a file named LEAD-TRAPPED. You can use the absolute path to this file with cat to display the conents without having to change directories now.   
+use: `cat  /opt/linux/linux-5.4/include/config/rfkill/LEAD-TRAPPED`     
+It says: 
+```
+The next clue is in: /usr/share/javascript/mathjax/jax/output/HTML-CSS/fonts/Gyre-Termes/Size6
+
+The next clue is **delayed** --- it will not become readable until you enter the directory with 'cd'.
+```
+
+Use `cd /usr/share/javascript/mathjax/jax/output/HTML-CSS/fonts/Gyre-Termes/Size6`.  
+Use `ls` to display its files. There's two files, `BLUEPRINT` and `Regular`. BLUEPRINT is similar to the previous clue files so we'll `cat` it.   
+`cat BLUEPRINT` gives:   
+```
+Tubular find!
+The next clue is in: /opt/busybox/busybox-1.33.2/examples/var_service/ftpd
+
+The next clue is **delayed** --- it will not become readable until you enter the directory with 'cd'.
+```
+
+
+Use `cd /opt/busybox/busybox-1.33.2/examples/var_service/ftpd` to enter the directory.  
+Use `ls`.  There's a `BRIEF` file. Using `cat BRIEF` gives:  
+```
+Lucky listing!
+The next clue is in: /opt/linux/linux-5.4/drivers/net/ethernet/intel/e1000e
+
+Watch out! The next clue is **trapped**. You'll need to read it out without 'cd'ing into the directory; otherwise, the clue will self destruct!
+```
+
+  
+Do the same as earlier. Use `ls /opt/linux/linux-5.4/drivers/net/ethernet/intel/e1000e` to display the file list.  
+There's a `SNIPPET TRAPPED` file. `cat` it using the absolute path: `cat /opt/linux/linux-5.4/drivers/net/ethernet/intel/e1000e/SNIPPET-TRAPPED`  
+It says: 
+```
+Lucky listing!
+The next clue is in: /opt/angr-management/_internal/jedi/third_party/typeshed/third_party/2and3/dateutil/tz
+```
+Use ` cd  /opt/angr-management/_internal/jedi/third_party/typeshed/third_party/2and3/dateutil/tz` and then use `ls.`  
+There's a file named `TEASER`.  Do `cat TEASER`.   
+It says: 
+```
+Congratulations, you found the clue!
+The next clue is in: /usr/lib/python3/dist-packages/constantly-15.1.0.egg-info
+
+The next clue is **hidden** --- its filename starts with a '.' character. You'll need to look for it using special options to '
+```
+
+Use `cd /usr/lib/python3/dist-packages/constantly-15.1.0.egg-info`  
+Then use `ls -a`. Since the filename starts with a `.`, the regular `ls` command won't list it.  
+The files are: `.  ..  .MEMO  PKG-INFO  dependency_links.txt  pbr.json  top_level.txt`  
+Use `cat .MEMO`  
+This gives:  
+```
+CONGRATULATIONS! Your perserverence has paid off, and you have found the flag!
+It is: pwn.college{0jDfy-DqUwG2Z23QXOxWfDYabEb.dljM4QDL4ATO0czW}
+```
+Which contains the flag.  
+
+  
+
+
+flag: `pwn.college{0jDfy-DqUwG2Z23QXOxWfDYabEb.dljM4QDL4ATO0czW}`
