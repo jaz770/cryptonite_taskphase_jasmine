@@ -182,4 +182,47 @@ Enter `challenge/run` which will check if the college file exists. If it does, i
   
 flag: `pwn.college{gZ60JMC-MoRvPfdrp0hKmEAr2JY.dFzM4QDL4ATO0czW}`
 
+## finding files
+You have to use the `find` command to locate the flag. Since it's located in a file named `flag`, the command will be:  
+`find / -name flag`  
+THe output is like this: 
+```
+find: ‘/tmp/tmp.MiOQGWw5Zc’: Permission denied
+find: ‘/etc/ssl/private’: Permission denied
+/usr/local/lib/python3.8/dist-packages/sympy/simplify/tests/flag
+/usr/local/lib/python3.8/dist-packages/pwnlib/flag
+/usr/local/share/radare2/5.9.5/flag
+find: ‘/var/cache/apt/archives/partial’: Permission denied
+find: ‘/var/cache/ldconfig’: Permission denied
+find: ‘/var/cache/private’: Permission denied
+find: ‘/var/lib/apt/lists/partial’: Permission denied
+find: ‘/var/lib/mysql-files’: Permission denied
+find: ‘/var/lib/private’: Permission denied
+find: ‘/var/lib/mysql’: Permission denied
+find: ‘/var/lib/mysql-keyring’: Permission denied
+find: ‘/var/lib/php/sessions’: Permission denied
+find: ‘/var/log/private’: Permission denied
+find: ‘/var/log/apache2’: Permission denied
+find: ‘/var/log/mysql’: Permission denied
+find: ‘/run/mysqld’: Permission denied
+find: ‘/run/sudo’: Permission denied
+find: ‘/root’: Permission denied
+/opt/pwndbg/.venv/lib/python3.8/site-packages/pwnlib/flag
+/opt/radare2/libr/flag
+find: ‘/proc/tty/driver’: Permission denied
+find: ‘/proc/1/task/1/fd’: Permission denied
+find: ‘/proc/1/task/1/fdinfo’: Permission denied
+```
+The flag is not in any file that's inaccessible. So try using `cat` on the available paths.  
+
+`cat /nix/store/pmvk2bk4p550w182rjfm529kfqddnvh3-python3.11-pwntools-4.12.0/lib/python3.11/site-packages/pwnlib/flag` shows:  
+`cat: /nix/store/1yagn5s8sf7kcs2hkccgf8d0wxlrv5sz-radare2-5.9.0/share/radare2/5.9.0/flag: Is a directory`
+
+Since only a few files are accessible, you can `cat` the contents of each till the flag is reached.
+
+`cat  /usr/local/lib/python3.8/dist-packages/sympy/simplify/tests/flag` gives:  
+`pwn.college{Mj4K43s4AIwBaAZN0UmHaK4MpwY.dJzM4QDL4ATO0czW}hacker@commands~finding-files:~$`  
+Which is the flag.  
+
+flag: `pwn.college{Mj4K43s4AIwBaAZN0UmHaK4MpwY.dJzM4QDL4ATO0czW}`
 
