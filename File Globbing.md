@@ -40,7 +40,8 @@ flag: `pwn.college{gjUSno8xrLJXo_ax_v6jb5v-dDw.dRjM4QDL4ATO0czW}`
 First, use `cd /challenge/files`.  
 Now, /challenge/run needs challenging, educational and pwning as arguments. In 6 characters or less. So c,e,p, can be put in [] and the rest can be wildcards. So our command is: 
 `/challenge/run [cep]*`  
-Which gives the flag.
+Which gives the flag.  
+
 flag: `pwn.college{8fN72MLRwl5OwKbMTGBnv_B5rG8.dVjM4QDL4ATO0czW}`
 
 ## Exclusionary Globbing
