@@ -5,7 +5,7 @@ Teaches globbing.
 Since the `cd` command can only be 4 characters at most, use `cd /ch*`.  
 This will bring you to the challenge directory.  
 Now enter `./run` to get the flag.  
-I've used `cd/ch*` to be as specific as psossible without exceeding the character limit.  
+I've used `cd/ch*` to be as specific as possible without exceeding the character limit.  
 you can also use `cd /c*` to change to the directory. In fact, in this challenge it will automatically bring you to the challenge directory.  
 
 flag: `pwn.college{URE_a0m2Zx-5JN-boBdi-3Uer05.dFjM4QDL4ATO0czW}`
