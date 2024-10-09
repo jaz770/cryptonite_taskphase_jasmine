@@ -36,4 +36,19 @@ The command: ` /challenge/run /challenge/files/file_[absh]`.
 
 flag: `pwn.college{gjUSno8xrLJXo_ax_v6jb5v-dDw.dRjM4QDL4ATO0czW}`
 
+## Mixing Globs
+First, use `cd /challenge/files`.  
+Now, /challenge/run needs challenging, educational and pwning as arguments. In 6 characters or less. So c,e,p, can be put in [] and the rest can be wildcards. So our command is: 
+`/challenge/run [cep]*`  
+Which gives the flag.
+flag: `pwn.college{8fN72MLRwl5OwKbMTGBnv_B5rG8.dVjM4QDL4ATO0czW}`
+
+## Exclusionary Globbing
+Since every file that doesn't start with p,w or n needs to be in the argument, let's exclude those.
+So the command is:  
+`/challenge/run [!pwn]*`  
+This excludes p,w,n and treats the other characters as wildcards that _can_ be included.
+flag: `pwn.college{0CZLWxqD-f6k701uzfR_xuNpeDd.dZjM4QDL4ATO0czW}`
+
+
 
