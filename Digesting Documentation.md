@@ -1,4 +1,5 @@
 # Digesting Documentation
+Teaches looking for help on how to use programs. 
 
 ## Learning From Documentation
 You have to run `challenge/challenge` to get the flag. But just entering the command won't work since it needs an argument passed to it.  
