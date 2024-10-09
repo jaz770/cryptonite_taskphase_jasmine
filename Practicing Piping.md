@@ -29,3 +29,14 @@ The command is: `/challenge/run > myflag 2> instructions`
 Now, use `cat myflag`, which reads out the flag.  
 
 flag: ` pwn.college{0eBD95YCOv2CNzDmLZWb9n-l6eB.ddjN1QDL4ATO0czW}`
+
+## Redirecting Input
+First, redirect `COLLEGE` to `PWN`.  
+Now, redirect `PWN` to `/challenge/run` as the input.  
+```
+echo COLLEGE>PWN
+/challenge/run<PWN
+```
+
+flag: `pwn.college{cHY1JnAoPAm-nRr4a77bwB3LGgB.dBzN1QDL4ATO0czW}`
+
