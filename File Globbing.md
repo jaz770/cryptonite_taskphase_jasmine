@@ -47,7 +47,8 @@ flag: `pwn.college{8fN72MLRwl5OwKbMTGBnv_B5rG8.dVjM4QDL4ATO0czW}`
 Since every file that doesn't start with p,w or n needs to be in the argument, let's exclude those.
 So the command is:  
 `/challenge/run [!pwn]*`  
-This excludes p,w,n and treats the other characters as wildcards that _can_ be included.
+This excludes p,w,n and treats the other characters as wildcards that _can_ be included.  
+
 flag: `pwn.college{0CZLWxqD-f6k701uzfR_xuNpeDd.dZjM4QDL4ATO0czW}`
 
 
