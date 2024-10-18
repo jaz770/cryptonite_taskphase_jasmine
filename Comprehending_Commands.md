@@ -228,7 +228,7 @@ flag: `pwn.college{Mj4K43s4AIwBaAZN0UmHaK4MpwY.dJzM4QDL4ATO0czW}`
 
 ## linking files
 `/challenge/catflag` gives the output `not-the-flag: no such file or directory`.  
-So if `not-the-flag` is linked to the /flag file, it will have conntent that it can display and will not give the `no such file or directory` message.  
+So if `not-the-flag` is linked to the /flag file, it will have content that it can display and will not give the `no such file or directory` message.  
 Link `not-the-flag to` `/flag`.  
 ```
 ln -s /flag not-the-flag
