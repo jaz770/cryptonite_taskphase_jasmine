@@ -46,7 +46,7 @@ job! Here is your flag:
 pwn.college{AVD98Ap5k2Jwg9b1FquCL7EGjCa.dJjN1QDL4ATO0czW}
 ```
 >[!NOTE]
->I've used sh to invoke another shell in the process but this isn't necessary. Since the variable declaration is local to that particular shell process, /challenge/run will not inherit COLLEGE and directly invoking /challenge/run after declaring COLLEGE will give the flag.
+>I've used sh to invoke another shell in the process, but this isn't necessary. Since the variable declaration is local to that particular shell process, /challenge/run will not inherit COLLEGE and directly invoking /challenge/run after declaring COLLEGE will give the flag.
 >
 >However, the new shell can be used to demonstrate that COLLEGE isn't inherited:
 
@@ -64,7 +64,7 @@ flag: `pwn.college{AVD98Ap5k2Jwg9b1FquCL7EGjCa.dJjN1QDL4ATO0czW}`
 
 ## Printing Exported Variables
 The `env` command is used to print out **all** exported ariables set in the shell. 
-THe variable name and its content are printed.  
+The variable name and its content are printed.  
 In this challenge, the FLAG variable is one of the variables exported to the current shell.  
 Enter `env` to print all the exported variables. This gives:  
 ```
@@ -89,3 +89,42 @@ A variable named `FLAG` has the flag as its value:
 `FLAG=pwn.college{00LJ_qCv5WYBAhokNsaj7E39sUL.dhTN1QDL4ATO0czW}`
 
 flag: `pwn.college{00LJ_qCv5WYBAhokNsaj7E39sUL.dhTN1QDL4ATO0czW}`
+
+## Storing Command Output
+The output of /challenge/run has to be stored in a variable named PWN.  
+The value stored in PWN is the flag.  
+The command is:  `PWN=$(/challenge/run)`  
+In this, the output of challenge run (obtained through $) is assigned to PWN (using =).  
+After this `echo $PWN` is used, which gives the value in PWN, which is the flag.  
+
+
+flag: `pwn.college{QJpn5kCMpAqfGaR12rsUzorGFZd.dVzN0UDL4ATO0czW}`
+
+## Reading Input
+In this challenge, PWN has to be assigned the value COLLEGE, but using the `read` command. This lets the user enter input.  
+The commands are:
+```
+read -p "Enter value of PWN:"  PWN
+Enter value of PWN:COLLEGE
+```
+The `-p` argument to `read` lets you specify a prompt that will appear when expecting input. In the above commands, `Enter the value of PWN` appears as the input from the user is expected.  
+This helps clearly demarcate input and output.
+
+The above commands give the output: 
+```
+You've set the PWN variable properly! As promised, here is the flag:
+pwn.college{wgmzc-mdO2hnZkRKerRVlG7YDHp.dhzN1QDL4ATO0czW}
+```
+flag: `pwn.college{wgmzc-mdO2hnZkRKerRVlG7YDHp.dhzN1QDL4ATO0czW}`
+
+## Reading Files
+In this challenge, `/challenge/read_me` has to be read into the PWN variable.  
+The output of `/challenge/read_me` can be redirected to standard input using `<`.   
+The `read` command takes the output of `challenge/read_me` as the input to be assigned to PWN.  
+The command:  `read PWN < /challenge/read_me`  
+>[!NOTE]
+> `<` redirects the contents of the arguement to standard input (stdin).
+>Since the `read` command reads from standard input, it can read the value redirected to standard input at assign it to the respective variable.
+
+
+flag: `pwn.college{QZk4yOf6jxvBcrDmJAf9q668xT_.dBjM4QDL4ATO0czW}`
