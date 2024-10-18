@@ -68,3 +68,15 @@ hacker       103      75  0 15:57 pts/0    00:00:00 ps -ef
 flag: `pwn.college{A-fDBXaN3LhPYs_-s1hYzdIVuA_.dJDN4QDL4ATO0czW}`
 
 ## Interrupting Processes
+In this challenge, you won't get the flag till `/challenge/run` is interrupted.  
+First, run `/challenge/run` and then interrupt it using the Ctrl+C command.  
+```
+hacker@processes~interrupting-processes:~$ /challenge/run
+I could give you the flag... but I won't, until this process exits. Remember,
+you can force me to exit with Ctrl-C. Try it now!
+^C
+Good job! You have used Ctrl-C to interrupt this process! Here is your flag:
+pwn.college{0fGnwC4ga4z2O6h_fYFYKpudZln.dNDN4QDL4ATO0czW}
+```
+flag: `pwn.college{0fGnwC4ga4z2O6h_fYFYKpudZln.dNDN4QDL4ATO0czW}`  
+
