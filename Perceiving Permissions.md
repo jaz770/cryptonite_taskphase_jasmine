@@ -28,3 +28,11 @@ Then `cat /flag` can be used as usual.
 flag: `pwn.college{EZVQyk7KReQw9iG3_nTpBuv1BKc.dJzNyUDL4ATO0czW}`
 
 ## Changing Permissions 
+In this challenge, only root can read /flag. So, permissions have to be changed so other users can also read it. Since `r` is used for granting permission to read a file, the command is:  
+`chmod o+r /flag`.  
+After this, `cat /flag` can be used.  
+
+flag: `pwn.college{8hojwBdVHDD-LQDslFc0KcX6Is6.dNzNyUDL4ATO0czW}`
+
+
+## Executable Files
