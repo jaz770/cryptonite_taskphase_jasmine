@@ -495,4 +495,18 @@ pwn.college{cJuRPCDRPjHYG6ZyIzVVb6XAwPm.dNTM5QDL4ATO0czW}
 ```
 flag: `pwn.college{cJuRPCDRPjHYG6ZyIzVVb6XAwPm.dNTM5QDL4ATO0czW}`
 
+## The SUID Bit
+`/challenge/getroot` opens a shell that allows the user to output the flag file contents.  
+To be able to execute the `/challenge/getroot` program as the root user, use the command:  
+`chmod u+s /challenge/getroot`  
+Now execute: `/challenge/getroot`  
+This gives the message: 
+```
+SUCCESS! You have set the suid bit on this program, and it is running as root!
+Here is your shell...
+```
+Now enter: `cat /flag`  
+
+flag: `pwn.college{gLtMqSZggLlNzdF4dGbNscW1djB.dNTM2QDL4ATO0czW}`
+
 
