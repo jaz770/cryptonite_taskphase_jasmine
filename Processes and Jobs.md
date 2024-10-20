@@ -80,3 +80,40 @@ pwn.college{0fGnwC4ga4z2O6h_fYFYKpudZln.dNDN4QDL4ATO0czW}
 ```
 flag: `pwn.college{0fGnwC4ga4z2O6h_fYFYKpudZln.dNDN4QDL4ATO0czW}`  
 
+## Suspending Processes
+
+First run `/challenge/run`. The followng message appears:
+```
+I'll only give you the flag if there's already another copy of me running in
+this terminal... Let's check!
+
+UID          PID    PPID  C STIME TTY          TIME CMD
+root          82      65  0 03:56 pts/0    00:00:00 bash /challenge/run
+root          84      82  0 03:56 pts/0    00:00:00 ps -f
+
+I don't see a second me!
+
+To pass this level, you need to suspend me and launch me again! You can
+background me with Ctrl-Z or, if you're not ready to do that for whatever
+reason, just hit Enter and I'll exit!
+```
+Enter Ctrl+Z: `^Z`  
+Then enter `/challenge/run` again. This will give the flag.  
+
+flag: `pwn.college{k5ChZvLS6gjgLe-oPPyWIy3hg38.dVDN4QDL4ATO0czW}`
+
+## Resuming Processes
+The `fg` command is sued to resume a suspended proceess. In this challenge, /challenge/run has to be resumed to get the flag. The commands are:
+```
+hacker@processes~resuming-processes:~$ /challenge/run
+Let's practice resuming processes! Suspend me with Ctrl-Z, then resume me with
+the 'fg' command! Or just press Enter to quit me!
+^Z
+[1]+  Stopped                 /challenge/run
+hacker@processes~resuming-processes:~$ fg
+/challenge/run
+I'm back! Here's your flag:
+pwn.college{cH5D2Yv6QTcnsc9H6JtJnuam0IJ.dZDN4QDL4ATO0czW}
+```
+
+`flag: pwn.college{cH5D2Yv6QTcnsc9H6JtJnuam0IJ.dZDN4QDL4ATO0czW}`
