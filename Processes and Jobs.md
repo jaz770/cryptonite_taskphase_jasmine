@@ -117,3 +117,48 @@ pwn.college{cH5D2Yv6QTcnsc9H6JtJnuam0IJ.dZDN4QDL4ATO0czW}
 ```
 
 `flag: pwn.college{cH5D2Yv6QTcnsc9H6JtJnuam0IJ.dZDN4QDL4ATO0czW}`
+
+## Backgrounding Processes
+You can resume processes in the background with the `bg` command.  
+In this challenge, /challenge/run needs another copy of it in the terminal but it must be running and not suspended. The commands for this are:  
+```
+/challenge/run
+^Z
+bg
+/challenge/run
+```
+First, /challenge/run is run and then suspended using Ctrl+Z. Then it's resumed in the background and another /challenge/run is executed. 
+Thus, there are 2 running instances of /challenge/run.    
+
+flag: `pwn.college{oyLWuiyE2YJXO9IbdC8nzOabHXb.ddDN4QDL4ATO0czW}`  
+
+## Foregrounding Processes
+In this challenge, /challenge/run must be suspended, resumed in the background, and then brought to the foreground. The commands for this:
+```
+/challenge/run
+^Z
+bg
+fg
+```
+First challenge/run is run, then suspended, then resumed in the background, and then resumed in the foreground.  
+flag: `pwn.college{YlPInZ4akYjoudiGB0wNqO1xhx7.dhDN4QDL4ATO0czW}`
+
+## Starting Background Processes
+A process can directly be run in the background without first having to first run, suspend and then background it. This is done by appending `&` to the command.  
+
+//challenge/run has to be directly run in the background to get the flag.  
+The command is: `/challenge/run &`  
+Which gives the flag.  
+
+
+flag: `pwn.college{MPkD_cdYfpmFCYD3bfYK5vX1DDD.dlDN4QDL4ATO0czW}`
+
+
+## Process Exit Codes
+In this challenge, the exit code of /challenge/get-code must be passed as an argument to /challenge/submit-code.  
+First, enter `/challenge/get-code`  
+This will give: `Exiting with an error code!`  
+Now enter `echo $?`. This will echo the output of `?`. Since, `?` stores the exit code, you'll get that as output.  
+The rror code is: 239.  
+So, the next command is:  `/challenge/submit-code 239`
+flag: `pwn.college{8YcPhxzNFEX2hlVxJ66BpAkM7UX.dljN4UDL4ATO0czW}`
