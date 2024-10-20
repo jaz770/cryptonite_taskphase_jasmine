@@ -34,3 +34,8 @@ Now you can run `/challenge/run` as zardus, which gives the flag.
 flag: `pwn.college{4TQSs58pP-NTBK5oqI5Q-lvmoUB.ddTN0UDL4ATO0czW}`
 
 ## Using sudo
+You need to be able to run commands is the root user to access the `/flag` file.  
+So, user `cat` as root user.  
+The command: `sudo cat /flag` 
+
+flag: `pwn.college{Yli0TIdqyP_1rxO92aALUryIkZg.dhTN0UDL4ATO0czW}`
